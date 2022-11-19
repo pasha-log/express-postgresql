@@ -62,3 +62,7 @@
 // psql cats_test < data.sql 
 // Once you have db, run your tests as usual with jest 
 
+
+// The main difference between the PUT and PATCH method is that the PUT method uses the request 
+// URI to supply a modified version of the requested resource which replaces the original version of the resource, 
+// whereas the PATCH method supplies a set of instructions to modify the resource.
