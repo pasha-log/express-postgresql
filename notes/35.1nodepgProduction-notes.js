@@ -57,7 +57,7 @@
 
 // Running Tests 
 
-// Make sure you create a test database first, otherwise they will hange. 
+// Make sure you create a test database first, otherwise they will change. 
 // createdb cats_test 
 // psql cats_test < data.sql 
 // Once you have db, run your tests as usual with jest 

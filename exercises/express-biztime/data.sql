@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS biztime;
+
+CREATE DATABASE biztime;
+
 \c biztime
 
 DROP TABLE IF EXISTS invoices;
@@ -19,12 +23,34 @@ CREATE TABLE invoices (
     CONSTRAINT invoices_amt_check CHECK ((amt > (0)::double precision))
 );
 
+CREATE TABLE industries (
+    code text PRIMARY KEY,
+    industry text NOT NULL UNIQUE
+);
+
+CREATE TABLE comp_indus (
+    comp_code text NOT NULL REFERENCES companies ON DELETE CASCADE,
+    indus_code text NOT NULL REFERENCES industries ON DELETE CASCADE,
+    PRIMARY KEY(comp_code, indus_code)
+);
+
+-- Comment this for testing
 INSERT INTO companies
   VALUES ('apple', 'Apple Computer', 'Maker of OSX.'),
          ('ibm', 'IBM', 'Big blue.');
 
-INSERT INTO invoices (comp_Code, amt, paid, paid_date)
+INSERT INTO invoices (comp_code, amt, paid, paid_date)
   VALUES ('apple', 100, false, null),
          ('apple', 200, false, null),
          ('apple', 300, true, '2018-01-01'),
          ('ibm', 400, false, null);
+
+INSERT INTO industries  
+  VALUES ('tech', 'technology'),
+         ('food', 'food'),
+         ('reta', 'retail'),
+         ('ener', 'energy'); 
+
+INSERT INTO comp_indus 
+  VALUES ('apple', 'tech'),
+         ('ibm', 'tech');
