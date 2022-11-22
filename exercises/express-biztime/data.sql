@@ -29,8 +29,8 @@ CREATE TABLE industries (
 );
 
 CREATE TABLE comp_indus (
-    comp_code text NOT NULL REFERENCES companies ON DELETE CASCADE,
-    indus_code text NOT NULL REFERENCES industries ON DELETE CASCADE,
+    comp_code text NOT NULL REFERENCES companies (code) ON DELETE CASCADE,
+    indus_code text NOT NULL REFERENCES industries (code) ON DELETE CASCADE,
     PRIMARY KEY(comp_code, indus_code)
 );
 

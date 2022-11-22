@@ -30,9 +30,10 @@ router.post('/', async (req, res, next) => {
 // end
 
 // associating an industry to a company
-router.post('/', async (req, res, next) => {
+router.post('/associate', async (req, res, next) => {
 	try {
 		const { comp_code, indus_code } = req.body;
+		console.log(comp_code, indus_code)
 		const compResult = await db.query('SELECT code FROM companies WHERE code = $1', [ comp_code ]);
 		const indusResult = await db.query('SELECT code FROM industries WHERE code = $1', [ indus_code ]);
 
