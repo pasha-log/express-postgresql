@@ -1,0 +1,46 @@
+ Refactor our Express apps to separate view logic ( routing) from model logic (data
+ Compare different OO designs for interfacing with our db.
+ Borrow useful ideas from ORMs to build our own model layers
+ Why do we use Object Orientation? 
+ Helps organize our code.
+ Abstraction , the ability to hide implementation details when they aren't needed. 
+ NOt everyone should have to understand everything.
+ Encapsulation, the ability to group functionality into larger logical pieces. 
+ TO get in a "capsule" 
+ - Everything related to cat data/functionality lives in Cat.
+ Polymorphism, the ability to implement similar functionality in different classes. 
+ The ability to make similar things work similarly. 
+ - COuld have other kinds of animals with same API 
+ - E.g., dogs and cats could both have a speak method, even though it behaves differently for different animals ("Meow" vs "Woof")
+
+//////////////////////////////
+
+ Simple OO Model
+ We can make a single class for "all cat related functions" 
+ It won't hold data 
+ You won't ever instantiate it! 
+ All methods are static (called on Cat). Designated as a class method. 
+ Helps organization, gets SQL out of our routes. 
+
+//////////////////////////////
+
+ Smarter OO model 
+ We can make a more traditional OO class 
+ You will instantiate it - once per dog!
+ It will hold data specific to each dog. 
+ It has static methods 
+ - To get all dogs, get a particular dog. 
+
+////////////////////////////// 
+
+ WHich one is better?
+ "Simple class" (no data, only static methods) 
+ - Can be easier to write class 
+ - Fewer SQL queries may fire (complete delete between Cat and Dog) 
+ - Doing more interesting things can be trickier
+ "Smarter class" (data, real methods) 
+ - Real attributes can be handy! 
+ - Easier to do validation 
+ Can do things like cat.speak() rather than Cat.speak(id
+ Sequelize is an ORM for JS. 
+ Not as popular as ORMs in other languages, though. Not really standard.
